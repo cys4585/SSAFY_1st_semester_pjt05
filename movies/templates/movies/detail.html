@@ -8,6 +8,12 @@
       <h5 class="card-title">{{ movie.title }}</h5>
       <p class="card-title">{{ movie.overview }}</p>
     </div>
+    <a href="{{ movie.poster_path }}">{{ movie.poster_path }}</a>
   </div>
+  <a href="{% url 'movies:update' movie.pk %}">UPDATE</a><br>
+  <form action="{% url 'movies:delete' movie.pk %}" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="DELETE">
+  </form>
   <a href="{% url 'movies:index' %}">BACK</a>
 {% endblock content %}
